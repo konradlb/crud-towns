@@ -1,0 +1,23 @@
+.root {
+    max-width: 1440px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 64px auto auto;
+    width: 100%;
+    grid-template-areas:
+        'header'
+        'viewTown'
+        'sidebar';
+    border: solid 1px #e5e7eb;
+}
+
+@media (min-width: 768px) {
+    .root {
+        grid-template-columns: 380px 1fr;
+        grid-auto-rows: 64px auto;
+        width: 100%;
+        grid-template-areas:
+            'header header'
+            'sidebar viewTown';
+    }
+}

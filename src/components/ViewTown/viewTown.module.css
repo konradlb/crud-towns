@@ -1,0 +1,75 @@
+.root {
+    grid-area: viewTown;
+    padding: 0 24px;
+    display: flex;
+}
+
+.about {
+    flex: 2;
+    margin: 0 59px 0 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 0 0 0;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 15px;
+}
+
+.image {
+    margin: 24px 0 0 0;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.description h3 {
+    margin: 24px 0 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.005em;
+}
+.description p {
+    margin: 11px 0 0 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.resources {
+    flex: 1;
+    margin-top: 12px;
+}
+
+.resourceTitle {
+    margin: 25px 0 23px 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.005em;
+}
+
+.place {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.link {
+    margin-top: 12px;
+}
+.link a {
+    color: #334155;
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+}

@@ -1,0 +1,68 @@
+.root {
+    grid-area: sidebar;
+    border-right: solid 1px #e5e7eb;
+    margin: 0 0 0 56px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.inputsWrapper {
+    border-bottom: solid 1px #e5e7eb;
+    margin: 32px 8px 0 8px;
+    padding: 0 16px 8px 16px;
+}
+
+.input {
+    margin: 0 0 16px 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+
+    :global .ant-select-selection-placeholder {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+    }
+}
+
+.dropp {
+    background-color: green;
+}
+
+.inputLabel {
+    display: block;
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.townsList {
+    padding: 24px 24px 24px 16px;
+}
+
+.townsButton {
+    width: 100%;
+    margin: 4px 0;
+
+    text-align: left;
+}
+
+.townsButton span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.addTownsButton {
+    margin: auto 24px 24px 24px;
+    background-color: #0f172a;
+    color: white;
+}
+.addTownsButton span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
