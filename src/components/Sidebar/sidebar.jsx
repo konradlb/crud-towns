@@ -1,8 +1,11 @@
 import { Input, Select, Button } from 'antd';
+import { Link, useLocation } from 'react-router-dom';
 
 import classes from './sidebar.module.css';
 
 const Sidebar = () => {
+    const { pathname } = useLocation();
+
     const towns = [
         { value: 'warszawa', label: 'Warszawa' },
         { value: 'kraków', label: 'Kraków' },
@@ -34,26 +37,41 @@ const Sidebar = () => {
 
     return (
         <aside className={classes.root}>
-            <div className={classes.inputsWrapper}>
-                <label className={classes.inputLabel}>Wyszukaj</label>
-                <Input
-                    className={classes.input}
-                    size="large"
-                    placeholder="Wpisz nazwę miasta"
-                />
-                <label className={classes.inputLabel}>Województwo</label>
-                <Select
-                    className={classes.input}
-                    size="large"
-                    placeholder="Wybierz województwo"
-                    options={voivodeships}
-                    onChange={handleChange}
-                />
-            </div>
-            {townsElements}
-            <Button size="large" className={classes.addTownsButton}>
-                Dodaj nowe miasto
-            </Button>
+            {pathname === '/' ? (
+                <>
+                    <div className={classes.inputsWrapper}>
+                        <label className={classes.inputLabel}>Wyszukaj</label>
+                        <Input
+                            className={classes.input}
+                            size="large"
+                            placeholder="Wpisz nazwę miasta"
+                        />
+                        <label className={classes.inputLabel}>
+                            Województwo
+                        </label>
+                        <Select
+                            className={classes.input}
+                            size="large"
+                            placeholder="Wybierz województwo"
+                            options={voivodeships}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    {townsElements}
+                    <Link className={classes.addTownLink} to="/add-town">
+                        <Button
+                            size="large"
+                            type="primary"
+                            className={classes.addTownButton}
+                            style={{
+                                backgroundColor: '#0f172a'
+                            }}
+                        >
+                            Dodaj nowe miasto
+                        </Button>
+                    </Link>
+                </>
+            ) : null}
         </aside>
     );
 };

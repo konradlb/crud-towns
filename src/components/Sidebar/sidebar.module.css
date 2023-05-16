@@ -20,7 +20,8 @@
     font-weight: 400;
     line-height: 24px;
 
-    :global .ant-select-selection-placeholder {
+    :global .ant-select-selection-placeholder,
+    :global .ant-select-selection-item {
         font-size: 14px;
         font-weight: 400;
         line-height: 24px;
@@ -40,13 +41,12 @@
 }
 
 .townsList {
-    padding: 24px 24px 24px 16px;
+    padding: 24px;
 }
 
 .townsButton {
     width: 100%;
     margin: 4px 0;
-
     text-align: left;
 }
 
@@ -56,11 +56,14 @@
     line-height: 24px;
 }
 
-.addTownsButton {
+.addTownLink {
     margin: auto 24px 24px 24px;
-    background-color: #0f172a;
-    color: white;
 }
+
+.addTownButton {
+    width: 100%;
+}
+
 .addTownsButton span {
     font-size: 14px;
     font-weight: 400;

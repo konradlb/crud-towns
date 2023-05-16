@@ -1,25 +1,29 @@
+import { Link } from 'react-router-dom';
+
 import classes from './header.module.css';
 
 const Header = () => {
     return (
         <header className={classes.root}>
-            <h1 className={classes.title}>Przeglądarka miast</h1>
+            <Link className={classes.titleLink} to="/">
+                <h1 className={classes.title}>Przeglądarka miast</h1>
+            </Link>
             <nav className={classes.navigation}>
                 <ul className={classes.navigationList}>
                     <li className={classes.navigationElement}>
-                        <a className={classes.navigationLink} href="/o-nas/">
+                        <Link className={classes.navigationLink} to="/o-nas">
                             O nas
-                        </a>
+                        </Link>
                     </li>
                     <li className={classes.navigationElement}>
-                        <a className={classes.navigationLink} href="/pomoc/">
+                        <Link className={classes.navigationLink} to="/pomoc">
                             Pomoc
-                        </a>
+                        </Link>
                     </li>
                     <li className={classes.navigationElement}>
-                        <a className={classes.navigationLink} href="/kontakt/">
+                        <Link className={classes.navigationLink} to="/kontakt">
                             Kontakt
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </nav>

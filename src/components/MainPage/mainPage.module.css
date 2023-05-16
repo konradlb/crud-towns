@@ -1,5 +1,6 @@
 .root {
     max-width: 1440px;
+    min-height: 1024px;
     display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: 64px auto auto;
@@ -9,6 +10,7 @@
         'viewTown'
         'sidebar';
     border: solid 1px #e5e7eb;
+    margin-bottom: 32px;
 }
 
 @media (min-width: 768px) {
