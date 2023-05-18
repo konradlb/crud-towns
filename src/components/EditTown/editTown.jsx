@@ -1,31 +1,27 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Input, Select, Button, Form } from 'antd';
 
 import { VOIVODESHIPS } from '../../helpers/constants';
+import { useEditTown } from '../../hooks/EditTown/useEditTown';
 import classes from './editTown.module.css';
 
 const EditTown = () => {
     const { pathname } = useLocation();
+    const { slug } = useParams();
 
-    console.log('pathname');
-    console.log(pathname);
+    const { onSubmit, initialValues } = useEditTown(slug);
 
-    const onSubmit = values => {
-        console.log('onSubmit', values);
-    };
+    const title =
+        pathname === '/add-town' ? 'Dodaj nowe miasto' : 'Edytuj miasto';
+    const submitFormText =
+        pathname === '/add-town' ? 'Dodaj nowe miasto' : 'Zapisz zmiany';
 
-    const initialValues = {
-        name: 'Szczecin',
-        voivodeship: 'zachodniopomorskie',
-        photoUrl: 'https',
-        description: 'Lorem',
-        links: 'https://',
-        places: 'starówka, galeria'
-    };
+    console.log('initialValues in component----------------');
+    console.log(initialValues);
 
     return (
         <main className={classes.root}>
-            <h2 className={classes.title}>Dodaj nowe miasto</h2>
+            <h2 className={classes.title}>{title}</h2>
             <Form
                 initialValues={initialValues}
                 className={classes.form}
@@ -57,7 +53,7 @@ const EditTown = () => {
                     />
                 </Form.Item>
                 <Form.Item
-                    name="photoUrl"
+                    name="pictureUrl"
                     label="Zdjęcie"
                     rules={[
                         { required: true, message: 'To pole jest wymagane' }
@@ -104,7 +100,7 @@ const EditTown = () => {
                         backgroundColor: '#0f172a'
                     }}
                 >
-                    Dodaj nowe miasto
+                    {submitFormText}
                 </Button>
             </Form>
         </main>

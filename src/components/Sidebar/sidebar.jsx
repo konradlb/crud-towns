@@ -1,37 +1,38 @@
 import { Input, Select, Button } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
-
+import { arrayOf, shape, string, func } from 'prop-types';
 import classes from './sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = props => {
+    const {
+        cities,
+        voivodeships,
+        handleChangeCity,
+        handleChangeVoivodeship,
+        handleChangeSearch
+    } = props;
     const { pathname } = useLocation();
+    const { Search } = Input;
 
-    const towns = [
-        { value: 'warszawa', label: 'Warszawa' },
-        { value: 'kraków', label: 'Kraków' },
-        { value: 'poznań', label: 'Poznań' },
-        { value: 'gdańsk', label: 'Gdańsk' },
-        { value: 'wrocław', label: 'Wrocław' }
-    ];
-
-    const voivodeships = [
-        { value: 'mazowieckie', label: 'Mazowieckie' },
-        { value: 'opolskie', label: 'Opolskie' }
-    ];
-
-    const handleChange = value => {
-        console.log(`selected ${value}`);
-    };
-
-    const townsElements = (
+    const citiesButtons = (
         <ul className={classes.townsList}>
-            {towns.map(town => (
-                <li className={classes.townsElement} key={town.value}>
-                    <Button size="large" className={classes.townsButton}>
-                        {town.label}
-                    </Button>
-                </li>
-            ))}
+            {cities === undefined ? (
+                <>Brak miast do wyświetlenia</>
+            ) : (
+                cities.map(city => (
+                    <li className={classes.townsElement} key={city.name}>
+                        <Button
+                            onClick={() => {
+                                handleChangeCity(city.id);
+                            }}
+                            size="large"
+                            className={classes.townsButton}
+                        >
+                            {city.name}
+                        </Button>
+                    </li>
+                ))
+            )}
         </ul>
     );
 
@@ -41,10 +42,11 @@ const Sidebar = () => {
                 <>
                     <div className={classes.inputsWrapper}>
                         <label className={classes.inputLabel}>Wyszukaj</label>
-                        <Input
+                        <Search
                             className={classes.input}
                             size="large"
                             placeholder="Wpisz nazwę miasta"
+                            onChange={handleChangeSearch}
                         />
                         <label className={classes.inputLabel}>
                             Województwo
@@ -54,10 +56,10 @@ const Sidebar = () => {
                             size="large"
                             placeholder="Wybierz województwo"
                             options={voivodeships}
-                            onChange={handleChange}
+                            onChange={handleChangeVoivodeship}
                         />
                     </div>
-                    {townsElements}
+                    {citiesButtons}
                     <Link className={classes.addTownLink} to="/add-town">
                         <Button
                             size="large"
@@ -77,3 +79,25 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+Sidebar.propTypes = {
+    cities: arrayOf(
+        shape({
+            id: string,
+            name: string,
+            description: string,
+            known_places: arrayOf(string),
+            links: arrayOf(string),
+            picture_url: string
+        })
+    ),
+    voivodeships: arrayOf(
+        shape({
+            value: string,
+            label: string
+        })
+    ),
+    handleChangeCity: func,
+    handleChangeVoivodeship: func,
+    handleChangeSearch: func
+};
