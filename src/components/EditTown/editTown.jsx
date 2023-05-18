@@ -9,7 +9,7 @@ const EditTown = () => {
     const { pathname } = useLocation();
     const { slug } = useParams();
 
-    const { onSubmit, saveStartData, initialValues } = useEditTown(slug);
+    const { onSubmit, handleReset, initialValues } = useEditTown(slug);
 
     const title =
         pathname === '/add-town' ? 'Dodaj nowe miasto' : 'Edytuj miasto';
@@ -18,14 +18,15 @@ const EditTown = () => {
     const addStartDataButton =
         pathname === '/add-town' ? (
             <Button
-                className={classes.submitForm}
+                className={classes.resetButton}
                 type="primary"
+                size="large"
                 style={{
                     backgroundColor: '#0f172a'
                 }}
-                onClick={saveStartData}
+                onClick={handleReset}
             >
-                dodaj dane startowe
+                Resetuj dane wszystkich miast
             </Button>
         ) : null;
 

@@ -18,6 +18,7 @@ import { START_DATA } from '../../helpers/constants';
 export const useFirebase = () => {
     const [loading, setLoading] = useState(false);
     const [cities, setCities] = useState();
+
     initializeApp(firebaseConfig);
 
     const db = getFirestore();
@@ -60,7 +61,12 @@ export const useFirebase = () => {
         setLoading(false);
     };
 
-    const saveStartData = async () => {
+    const resetCitiesData = async () => {
+        //delete all current cities data
+        await cities.forEach(city => {
+            deleteCity(city.id);
+        });
+        //set clean cities data
         START_DATA.forEach(city => {
             addCity(city);
         });
@@ -75,7 +81,7 @@ export const useFirebase = () => {
         updateCity,
         deleteCity,
         addCity,
-        saveStartData,
+        resetCitiesData,
         loading,
         cities
     };

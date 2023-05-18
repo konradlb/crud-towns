@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useFirebase } from '../firebase/useFirebase';
@@ -7,7 +6,7 @@ import { removeSpecialChars } from '../../helpers/removeSpecialChars';
 export const useEditTown = slug => {
     let navigate = useNavigate();
 
-    const { updateCity, addCity, saveStartData, cities } = useFirebase();
+    const { updateCity, addCity, resetCitiesData, cities } = useFirebase();
 
     const currentCity = cities?.find(city => {
         return city.name_slug === slug;
@@ -32,6 +31,11 @@ export const useEditTown = slug => {
         navigate(`/`);
     };
 
+    const handleReset = () => {
+        resetCitiesData();
+        navigate(`/`);
+    };
+
     let initialValues = {};
 
     if (currentCity) {
@@ -45,5 +49,5 @@ export const useEditTown = slug => {
         };
     }
 
-    return { onSubmit, saveStartData, initialValues };
+    return { onSubmit, handleReset, initialValues };
 };
