@@ -9,15 +9,25 @@ const EditTown = () => {
     const { pathname } = useLocation();
     const { slug } = useParams();
 
-    const { onSubmit, initialValues } = useEditTown(slug);
+    const { onSubmit, saveStartData, initialValues } = useEditTown(slug);
 
     const title =
         pathname === '/add-town' ? 'Dodaj nowe miasto' : 'Edytuj miasto';
     const submitFormText =
         pathname === '/add-town' ? 'Dodaj nowe miasto' : 'Zapisz zmiany';
-
-    console.log('initialValues in component----------------');
-    console.log(initialValues);
+    const addStartDataButton =
+        pathname === '/add-town' ? (
+            <Button
+                className={classes.submitForm}
+                type="primary"
+                style={{
+                    backgroundColor: '#0f172a'
+                }}
+                onClick={saveStartData}
+            >
+                dodaj dane startowe
+            </Button>
+        ) : null;
 
     return (
         <main className={classes.root}>
@@ -103,6 +113,7 @@ const EditTown = () => {
                     {submitFormText}
                 </Button>
             </Form>
+            {addStartDataButton}
         </main>
     );
 };

@@ -13,6 +13,7 @@ import {
 } from 'firebase/firestore';
 
 import { firebaseConfig } from './firebaseConfig';
+import { START_DATA } from '../../helpers/constants';
 
 export const useFirebase = () => {
     const [loading, setLoading] = useState(false);
@@ -59,9 +60,23 @@ export const useFirebase = () => {
         setLoading(false);
     };
 
+    const saveStartData = async () => {
+        START_DATA.forEach(city => {
+            addCity(city);
+        });
+    };
+
     useEffect(() => {
         getCities();
     }, []);
 
-    return { getCity, updateCity, deleteCity, addCity, loading, cities };
+    return {
+        getCity,
+        updateCity,
+        deleteCity,
+        addCity,
+        saveStartData,
+        loading,
+        cities
+    };
 };

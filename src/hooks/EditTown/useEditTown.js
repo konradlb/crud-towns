@@ -7,7 +7,7 @@ import { removeSpecialChars } from '../../helpers/removeSpecialChars';
 export const useEditTown = slug => {
     let navigate = useNavigate();
 
-    const { updateCity, addCity, cities } = useFirebase();
+    const { updateCity, addCity, saveStartData, cities } = useFirebase();
 
     const currentCity = cities?.find(city => {
         return city.name_slug === slug;
@@ -52,5 +52,5 @@ export const useEditTown = slug => {
     console.log('initialValues in hook');
     console.log(initialValues);
 
-    return { onSubmit, initialValues };
+    return { onSubmit, saveStartData, initialValues };
 };
