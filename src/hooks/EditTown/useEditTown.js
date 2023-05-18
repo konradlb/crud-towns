@@ -13,11 +13,7 @@ export const useEditTown = slug => {
         return city.name_slug === slug;
     });
 
-    console.log('currentCity------------------');
-    console.log(currentCity);
-
     const onSubmit = values => {
-        console.log('onSubmit', values);
         const data = {
             description: values.description,
             name: values.name,
@@ -48,9 +44,6 @@ export const useEditTown = slug => {
             places: 'starówka, galeria'
         };
     }
-
-    console.log('initialValues in hook');
-    console.log(initialValues);
 
     return { onSubmit, saveStartData, initialValues };
 };

@@ -13,18 +13,10 @@ export const useMainPage = () => {
         setCity(cities.find(city => city.id === id));
     };
     const handleChangeVoivodeship = value => {
-        console.log('wojevoid value');
-        console.log(value);
-
-        console.log('cities');
-        console.log(cities);
-
         const filteredCities = cities.filter(city => {
             city.voivodeship === value;
         });
 
-        console.log('filteredCities');
-        console.log(filteredCities);
         setCitiesToShow(filteredCities);
     };
     const handleChangeSearch = event => {
@@ -47,9 +39,6 @@ export const useMainPage = () => {
             );
         }
     }, [cities]);
-
-    console.log('citiesToShow');
-    console.log(citiesToShow);
 
     return {
         city,
