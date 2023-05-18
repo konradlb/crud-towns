@@ -2,6 +2,8 @@
 
 Recruitment task with React.js and Firebase. The goal was to build simple Cities app to store data about cities in Firebase
 
+## Local instalation
+
 1. Clone this repo by
 
 ```
