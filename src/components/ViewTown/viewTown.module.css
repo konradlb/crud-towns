@@ -2,12 +2,12 @@
     grid-area: viewTown;
     padding: 0 24px;
     margin-bottom: 10px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 .about {
-    flex: 2;
-    margin: 0 59px 0 0;
+    padding: 0 59px 0 0;
 }
 
 .header {
@@ -52,7 +52,6 @@
 }
 
 .resources {
-    flex: 1;
     margin-top: 12px;
 }
 
@@ -73,6 +72,7 @@
 
 .link {
     margin-top: 12px;
+    overflow: hidden;
 }
 .link a {
     color: #334155;
@@ -80,4 +80,5 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 14px;
+    overflow-wrap: anywhere;
 }
