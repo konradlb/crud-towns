@@ -1,4 +1,6 @@
 import { useNavigate } from 'react-router-dom';
+import { Modal } from 'antd';
+import { ExclamationCircleFilled } from '@ant-design/icons';
 
 import { shape, arrayOf, string } from 'prop-types';
 
@@ -13,6 +15,7 @@ const ViewTown = props => {
     const { city } = props;
     let navigate = useNavigate();
     const { deleteCity } = useFirebase();
+    const { confirm } = Modal;
 
     if (!city) return <>Brak miast do wyświetlenia</>;
     const {
@@ -28,9 +31,9 @@ const ViewTown = props => {
     const handleEdit = () => {
         navigate(`/edit-town/${name_slug}`);
     };
-    const handleDelete = () => {
-        deleteCity(id);
-    };
+    // const handleDelete = () => {
+    //     deleteCity(id);
+    // };
 
     const knownPlacesElement = known_places?.length ? (
         <div className={classes.knownPlaces}>
@@ -58,6 +61,22 @@ const ViewTown = props => {
         </div>
     ) : null;
 
+    const showPropsConfirm = () => {
+        confirm({
+            title: 'Czy na pewno chcesz usunąć miasto z bazy',
+            icon: <ExclamationCircleFilled />,
+            okText: 'Yes',
+            okType: 'danger',
+            cancelText: 'No',
+            onOk() {
+                deleteCity(id);
+            },
+            onCancel() {
+                console.log('Cancel');
+            }
+        });
+    };
+
     return (
         <main className={classes.root}>
             <section className={classes.about}>
@@ -66,7 +85,7 @@ const ViewTown = props => {
                     <div>
                         <Edit onClick={handleEdit} className={classes.icon} />
                         <Trash
-                            onClick={handleDelete}
+                            onClick={showPropsConfirm}
                             className={classes.icon}
                         />
                     </div>
