@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Modal, Space } from 'antd';
+import { Button, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 
 import { CONTENT } from '../../helpers/constants';
@@ -62,29 +62,27 @@ const Header = () => {
                 <h1 className={classes.title}>Przeglądarka miast</h1>
             </Link>
             <nav className={classes.navigation}>
-                <Space wrap>
-                    <Button
-                        className={classes.navigationLink}
-                        type="link"
-                        onClick={handleOpenAboutModal}
-                    >
-                        O nas
-                    </Button>
-                    <Button
-                        className={classes.navigationLink}
-                        type="link"
-                        onClick={handleOpenHelpModal}
-                    >
-                        Pomoc
-                    </Button>
-                    <Button
-                        className={classes.navigationLink}
-                        type="link"
-                        onClick={handleOpenContactModal}
-                    >
-                        Kontakt
-                    </Button>
-                </Space>
+                <Button
+                    className={classes.navigationLink}
+                    type="link"
+                    onClick={handleOpenAboutModal}
+                >
+                    O nas
+                </Button>
+                <Button
+                    className={classes.navigationLink}
+                    type="link"
+                    onClick={handleOpenHelpModal}
+                >
+                    Pomoc
+                </Button>
+                <Button
+                    className={classes.navigationLink}
+                    type="link"
+                    onClick={handleOpenContactModal}
+                >
+                    Kontakt
+                </Button>
             </nav>
             {modalsElements}
         </header>
